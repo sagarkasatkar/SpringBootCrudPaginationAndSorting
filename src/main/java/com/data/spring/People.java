@@ -3,7 +3,7 @@ package com.data.spring;
 import jakarta.persistence.*;
 
 @Entity
-public class User {
+public class People {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -20,7 +20,7 @@ public class UserController {
 	
 	
 	@GetMapping
-	public Page<User> getAllUsers(@PageableDefault ( sort="email" , direction= Sort.Direction.ASC)Pageable pageable){
+	public Page<People> getAllUsers(@PageableDefault ( sort="email" , direction= Sort.Direction.ASC)Pageable pageable){
 		
 		return ur.findAll(pageable);
 		
@@ -28,22 +28,22 @@ public class UserController {
 	
 	
 	@GetMapping("/{id}")
-	public Optional<User> getUserById(@PathVariable int id){
+	public Optional<People> getUserById(@PathVariable int id){
 		
 		return ur.findById(id);
 	}
 	
 	@PostMapping
-	public User saveUser(@RequestBody User user) {
+	public People saveUser(@RequestBody People user) {
 		
 		return ur.save(user);
 	}
 	
 	
 	@PutMapping("/{id}")
-	public User updateUser(@PathVariable int id , @RequestBody User userdetails)
+	public People updateUser(@PathVariable int id , @RequestBody People userdetails)
 	{
-		User user = ur.findById(id).orElseThrow(()->new RuntimeException("Invalid "+id));
+		People user = ur.findById(id).orElseThrow(()->new RuntimeException("Invalid "+id));
 		
 		user.setEmail(userdetails.getEmail());
 		user.setPassword(userdetails.getPassword());
